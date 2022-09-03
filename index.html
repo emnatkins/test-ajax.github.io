@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>live site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Quantico:wght@700&family=Rubik+Maze&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="boxing">
+
+
+        <div id="list-var">
+            <div class="box-speed">
+                <select class="tag_li" id="format">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                </select>
+                <input type="text" class="tag_li" id="address" placeholder="Enter address...">
+                <select class="tag_li" id="donting">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select>
+                <button class="setCookie" id="set_address">Submit</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="tag_li" id="export_"></p>
+</body>
+
+
+<script>
+    document.getElementById('set_address').addEventListener('click', set_address);
+
+    function set_address() {
+        let format_ = document.getElementById('format').value;
+        let address_ = document.getElementById('address').value;
+        let donting_ = document.getElementById('donting').value;
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            document.getElementById('export_').innerHTML = this.responseXML;
+        }
+
+        xhttp.open(format_, address_, donting_);
+        xhttp.send();
+
+    }
+</script>
+
+</html>
